@@ -30,3 +30,17 @@ class TicTacToeTest(unittest.TestCase):
         tic_tac_toe.board.matrix = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
 
         self.assertEqual(tic_tac_toe.has_vertical_win_pattern(), False)
+
+    def test_game_should_detect_non_empty_diagonal_winning_pattern(self):
+        tic_tac_toe = TicTacToe()
+        tic_tac_toe.board.matrix = [["X", " ", " "], [" ", "X", " "], [" ", " ", "X"]]
+
+        self.assertEqual(tic_tac_toe.has_diagonal_win_pattern(), True)
+
+        tic_tac_toe.board.matrix = [[" ", " ", "X"], [" ", "X", " "], ["X", " ", " "]]
+
+        self.assertEqual(tic_tac_toe.has_diagonal_win_pattern(), True)
+
+        tic_tac_toe.board.matrix = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+
+        self.assertEqual(tic_tac_toe.has_diagonal_win_pattern(), False)

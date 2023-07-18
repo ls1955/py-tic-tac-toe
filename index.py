@@ -53,6 +53,7 @@ class TicTacToe:
     def has_vertical_win_pattern(self):
         """See if any column in board has same player's symbol."""
         matrix = self.board.matrix
+
         for col_index in range(len(matrix[0])):
             col = [matrix[row_index][col_index] for row_index in range(3)]
 
@@ -60,7 +61,19 @@ class TicTacToe:
                 return True
         return False
 
-    # def has_diagonal_win_pattern(coor)
+    def has_diagonal_win_pattern(self):
+        """See if two diagonl in board has same player's symbol."""
+        matrix = self.board.matrix
+
+        # diagonal from top left to bottom right
+        diagonal_one = [matrix[offset][offset] for offset in range(3)]
+        # diagonal from top right to bottom left
+        diagonal_two = [matrix[offset][-offset - 1] for offset in range(3)]
+
+        for diagonal in [diagonal_one, diagonal_two]:
+            if len(set(diagonal)) == 1 and not diagonal.count(" "):
+                return True
+        return False
 
     # TODO: What if the board is full and there is no winner?
 
@@ -87,4 +100,4 @@ class TicTacToe:
 
 # Main driver script
 game = TicTacToe()
-game.run()
+# game.run()
