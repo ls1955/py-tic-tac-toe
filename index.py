@@ -11,9 +11,7 @@ class TicTacToe:
 
     def run(self):
         """The main game loop that run until there is a winner."""
-        counter = 2
-
-        while counter:
+        while True:
             print(self.board)
 
             while True:
@@ -33,9 +31,7 @@ class TicTacToe:
             if self.board.is_full():
                 print("Looks like it is a draw.")
                 return
-
-            # Safety measure to prevent infinite loop
-            counter -= 1
+            self.is_player_one_turn = not self.is_player_one_turn
 
     def curr_player(self):
         """Return current player object for every turn."""
