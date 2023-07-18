@@ -96,6 +96,12 @@ class TicTacToe:
 
         def __str__(self):
             return "\n".join(str(row) for row in self.matrix)
+        
+        def is_full(self):
+            for row in self.matrix:
+                if row.count(" "):
+                    return False
+            return True
 
 
 # Main driver script
