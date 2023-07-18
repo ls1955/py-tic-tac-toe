@@ -23,11 +23,11 @@ class TicTacToe:
                 if self.is_valid_input(x_coor, y_coor):
                     break
                 print("The coordinates might be invalid or has already taken, please try again")
-            self.curr_player.mark(self.board, x_coor, y_coor)
+            self.curr_player().mark(self.board, x_coor, y_coor)
 
-            if (has_horizontal_win_pattern() or
-                has_vertical_win_pattern() or
-                has_diagonal_win_pattern()):
+            if (self.has_horizontal_win_pattern() or
+                self.has_vertical_win_pattern() or
+                self.has_diagonal_win_pattern()):
                 print(f"The winner is {self.curr_player().name}.")
                 return
             if self.board.is_full():
