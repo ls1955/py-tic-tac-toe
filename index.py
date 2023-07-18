@@ -25,11 +25,14 @@ class TicTacToe:
                 print("The coordinates might be invalid or has already taken, please try again")
             self.curr_player.mark(self.board, x_coor, y_coor)
 
-            # if (has_horizontal_win_pattern(x_coor, y_coor) or
-            #     has_vertical_win_pattern(x_coor, y_coor) or
-            #     has_diagonal_win_pattern(x_coor, y_coor)):
-            #     # Return output and be done with it
-            #     pass
+            if (has_horizontal_win_pattern() or
+                has_vertical_win_pattern() or
+                has_diagonal_win_pattern()):
+                print(f"The winner is {self.curr_player().name}.")
+                return
+            if self.board.is_full():
+                print("Looks like it is a draw.")
+                return
 
             # Safety measure to prevent infinite loop
             counter -= 1
@@ -75,8 +78,6 @@ class TicTacToe:
                 return True
         return False
 
-    # TODO: What if the board is full and there is no winner?
-
 
     class Player:
         """Players in Tic-Tac-Toe."""
@@ -106,4 +107,4 @@ class TicTacToe:
 
 # Main driver script
 game = TicTacToe()
-# game.run()
+game.run()
